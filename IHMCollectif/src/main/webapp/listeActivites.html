@@ -9,13 +9,13 @@
     <body>
         <h1>Collect'IF &ndash; Liste des Activités</h1>
         <div id='listeActivites'>
-            <span>chargement en cours...</span>
+            <a id='liste' href='#'> Afficher la liste des activites </a>
         </div>
 
 
         <script>
 
-            $(function() {
+            $('#liste').click(function() {
 
                 $.ajax({
                     url: './ControlerServlet',
@@ -30,12 +30,10 @@
                     var contenuHtml = '<ul>';
                     var i;
                     for (i = 0; i < activites.length; i++) {
-                        contenuHtml += '<li>' + activites[i].denomination + '</li>';
+                        contenuHtml += ('<li>' + "[" + activites[i].id + "] " + activites[i].denomination + "<a href='#' onclick=\"details('" + activites[i].denomination + "');\"> voir</a>"+ '</li>');
                     }
                     contenuHtml += '</ul>';
                     $('#listeActivites').html(contenuHtml);
-                    
-                   // $('#listeActivites').html('REUSSITE de chargement');
 
 
                 })
@@ -47,6 +45,42 @@
                 });
 
             });
+            
+            function details(typeAct)
+            {
+                $(function() {
+
+                    $.ajax({
+                        url: './ControlerServlet',
+                        type: 'POST',
+                        data: {
+                            todo: 'Activite',
+                            type: typeAct
+                        },
+                        dataType: 'json'
+                    })
+                    .done(function(data) {
+                       /* var activites = data.activites;
+                        var contenuHtml = '<ul>';
+                        var i;
+                        for (i = 0; i < activites.length; i++) {
+                            contenuHtml += ('<li>' + "[" + activites[i].id + "] " + activites[i].denomination + '</li>');
+                        }
+                        contenuHtml += '</ul>';
+                        $('#listeActivites').html(contenuHtml);*/
+                        $('#listeActivites').html('DETAILS ' + typeAct);
+
+
+                    })
+                    .fail(function() {
+                        $('#listeActivites').html('ERREUR de chargement');
+                    })
+                    .always(function() {
+                        //
+                    });
+
+                });
+            }
 
         </script>
     </body>
