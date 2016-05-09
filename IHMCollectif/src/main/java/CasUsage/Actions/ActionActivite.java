@@ -28,13 +28,12 @@ public class ActionActivite extends Action {
             
             Activite activiteEnCours = null;
             String type = request.getParameter("type");
-            request.setAttribute( "type", type );
             for (Activite activite : activites) {
                 if (activite.getDenomination().equals(type))     
                     activiteEnCours = activite;
-            Serialization.printActivite(out, activite);
             }
-                request.setAttribute( "activite", activiteEnCours );
+            Serialization.printActivite(out, activiteEnCours);    
+            request.setAttribute( "activite", activiteEnCours );
         } catch (Throwable ex) {
             Logger.getLogger(ControlerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

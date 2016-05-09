@@ -60,10 +60,11 @@
                         dataType: 'json'
                     })
                     .done(function(data) {
+                        activite = data.activite;
                         var contenuHtml = '<ul>';
-                            contenuHtml += ('<li>' + data.denomination + '</li>');
-                            contenuHtml += "<li> par équipe: " + data.parEquipe + "</li>";
-                            contenuHteml += "<li> nombre de participants: " + data.nbParticipants + "</li>";
+                            contenuHtml += ('<li>' + activite.denomination + '</li>');
+                            contenuHtml += "<li> par équipe: " + activite.parEquipe + "</li>";
+                            contenuHtml += "<li> nombre de participants: " + activite.nbParticipants + "</li>";
                         contenuHtml += '</ul>';
                         $('#listeActivites').html(contenuHtml);
 
