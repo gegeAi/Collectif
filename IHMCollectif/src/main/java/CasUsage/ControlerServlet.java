@@ -51,17 +51,17 @@ public class ControlerServlet extends HttpServlet {
         //Recupere le paramètre todo
         String todo = request.getParameter("todo");
 
-        String vue = "";
+        //String vue = "";
 
         // Recherche de l'action correspondante
         Action action = this.getAction(todo);
-        action.execute(request);
+        action.execute(request, response.getWriter());
 
         
-        vue = this.setVue(todo, request);
+       /* vue = this.setVue(todo, request);
 
         
-        request.getRequestDispatcher(vue).forward(request, response);
+        request.getRequestDispatcher(vue).forward(request, response);*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -8,6 +8,7 @@ import CasUsage.ControlerServlet;
 import static CasUsage.ControlerServlet.servMetier;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,11 +21,12 @@ import javax.servlet.http.HttpServletRequest;
 public class ActionListeActivite extends Action{
     
     @Override
-    public void execute(HttpServletRequest request) {
+    public void execute(HttpServletRequest request, PrintWriter out) {
         List<Activite> activites;
         try {
             activites = servMetier.listerActivites();
             request.setAttribute( "activites", activites );
+            Serialization.printListeActivite(out, activites);
         } catch (Throwable ex) {
             Logger.getLogger(ControlerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

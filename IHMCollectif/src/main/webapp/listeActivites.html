@@ -18,23 +18,25 @@
             $(function() {
 
                 $.ajax({
-                    url: './ActionServlet',
+                    url: './ControlerServlet',
                     type: 'POST',
                     data: {
-                        action: '[...]',
-                        param: '[...]' // etc.
+                        todo: 'listeActivite'
                     },
                     dataType: 'json'
                 })
                 .done(function(data) {
                     var activites = data.activites;
+                    var contenu = JSON.parse(activites);
                     var contenuHtml = '<ul>';
                     var i;
                     for (i = 0; i < activites.length; i++) {
-                        contenuHtml += '<li>' + '[...]' + '</li>';
+                        contenuHtml += '<li>' + contenu.denomination + '</li>';
                     }
                     contenuHtml += '</ul>';
                     $('#listeActivites').html(contenuHtml);
+                    
+                   // $('#listeActivites').html('REUSSITE de chargement');
 
 
                 })
