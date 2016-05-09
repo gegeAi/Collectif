@@ -27,11 +27,10 @@
                 })
                 .done(function(data) {
                     var activites = data.activites;
-                    var contenu = JSON.parse(activites);
                     var contenuHtml = '<ul>';
                     var i;
                     for (i = 0; i < activites.length; i++) {
-                        contenuHtml += '<li>' + contenu.denomination + '</li>';
+                        contenuHtml += '<li>' + activites[i].denomination + '</li>';
                     }
                     contenuHtml += '</ul>';
                     $('#listeActivites').html(contenuHtml);
