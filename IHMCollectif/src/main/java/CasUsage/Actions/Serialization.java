@@ -42,4 +42,27 @@ public class Serialization {
         out.println(json);
     }
     
+    public static void printActivite( PrintWriter out, Activite activite)
+    {
+
+        
+
+           JsonObject jsonActivite = new JsonObject();
+           
+           jsonActivite.addProperty("id",activite.getId());
+           jsonActivite.addProperty("parEquipe", activite.isParEquipe()? "oui":"non");
+           jsonActivite.addProperty("denomination",activite.getDenomination());
+           jsonActivite.addProperty("nbParticipants",activite.getNbParticipants());
+        
+        // Objet JSON "Conteneur"
+        JsonObject container = new JsonObject();
+        container.add("activite", jsonActivite);
+        
+        //Serialisation et ecriture dans le flot de sortie
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(container);
+        out.println(json);
+        
+    }
+    
 }

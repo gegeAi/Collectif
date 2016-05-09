@@ -32,6 +32,7 @@ public class ActionActivite extends Action {
             for (Activite activite : activites) {
                 if (activite.getDenomination().equals(type))     
                     activiteEnCours = activite;
+            Serialization.printActivite(out, activite);
             }
                 request.setAttribute( "activite", activiteEnCours );
         } catch (Throwable ex) {

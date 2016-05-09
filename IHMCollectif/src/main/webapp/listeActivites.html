@@ -60,15 +60,12 @@
                         dataType: 'json'
                     })
                     .done(function(data) {
-                       /* var activites = data.activites;
                         var contenuHtml = '<ul>';
-                        var i;
-                        for (i = 0; i < activites.length; i++) {
-                            contenuHtml += ('<li>' + "[" + activites[i].id + "] " + activites[i].denomination + '</li>');
-                        }
+                            contenuHtml += ('<li>' + data.denomination + '</li>');
+                            contenuHtml += "<li> par équipe: " + data.parEquipe + "</li>";
+                            contenuHteml += "<li> nombre de participants: " + data.nbParticipants + "</li>";
                         contenuHtml += '</ul>';
-                        $('#listeActivites').html(contenuHtml);*/
-                        $('#listeActivites').html('DETAILS ' + typeAct);
+                        $('#listeActivites').html(contenuHtml);
 
 
                     })
