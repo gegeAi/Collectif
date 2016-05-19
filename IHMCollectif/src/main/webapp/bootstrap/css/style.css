@@ -1,0 +1,88 @@
+body{
+	margin-top: 80px;
+}
+
+h2{
+	margin-bottom: 100px;
+}
+
+.form-control {
+	width: 60%;	
+}
+
+.btn-block60 {
+    width: 60%;
+}
+
+div.vertical-line {
+    width: 1px; /* Line width */
+  background-color: black; /* Line color */
+  height: 100%; /* Override in-line if you want specific height. */
+  float: left; /* Causes the line to float to left of content. 
+    You can instead use position:absolute or display:inline-block
+    if this fits better with your design */
+}
+
+input{
+  
+  margin-bottom: 10px;
+}
+
+.btn-inscription{
+  
+  width: 25%;
+}
+
+.Page-accueil{
+  margin-left: 100px; 
+}
+
+.responsable{
+  width: 50%;
+}
+
+.typeActivite{
+  height: 100px;
+}
+
+#listeActivites{
+  max-height: 310px;
+  overflow: auto;
+}
+
+body{
+  background: url(../../img/Roulette.jpeg) no-repeat center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.container{
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 15px;
+  padding: 30px;
+}
+
+/*
+ *  STYLE 2
+ */
+
+#listeActivites::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#listeActivites::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#listeActivites::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #D62929;
+}
+

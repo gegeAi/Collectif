@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    
     <servlet>
         <servlet-name>ControlerServlet</servlet-name>
-        <servlet-class>CasUsage.ControlerServlet</servlet-class>
+        <servlet-class>Controler.ControlerServlet</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>ControlerServlet</servlet-name>
         <url-pattern>/ControlerServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ActionListeActivite</servlet-name>
         <servlet-class>CasUsageActions.ActionListeActivite</servlet-class>
@@ -19,7 +16,6 @@
         <servlet-name>ActionListeActivite</servlet-name>
         <url-pattern>/ActionListeActivite</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ActionAccueil</servlet-name>
         <servlet-class>CasUsageActions.ActionAccueil</servlet-class>
