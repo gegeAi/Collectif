@@ -86,3 +86,41 @@ body{
 	background-color: #D62929;
 }
 
+li
+{
+    list-style: none;
+    
+}
+
+#top 
+{
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+}
+
+#top li 
+{
+    display: inline-block;
+}    
+
+#top .stretch 
+{ 
+    display: inline-block;
+    width: 100%;
+}    
+
+#middle
+{
+    padding: 50px;
+    margin: 50px;
+    text-align: center;
+}
+
+#middle .ligne
+{
+    display: inline-block;
+    text-align: top;
+    
+}
+

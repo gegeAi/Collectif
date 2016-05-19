@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<style type="text/css">
-
-    #top {
-        padding: 0;
-        margin: 0;
-    }
-    
-    #top div {
-        diplay: inline;
-        list-style: none;
-    }    
-</style>
-    
 
 <div class="row text-center">
     <ul id="top" >
         <li>
             <a href="Accueil.html" class="Collectif"> Collect'IF </a>
         </li>
-        <li>
-            <a href="Accueil.html" class="Collectif"> Decoexion </a>
+        <li>        
         </li>
+        <li>
+            <form class="form-group" id="formCo" action="Accueil.html">
+                    <button type="submit" id="disconnect"> Déconnexion </button>
+            </form>
+        </li>
+        <li class="stretch"></li>
     </ul>
 </div>
 
@@ -28,4 +20,34 @@
     <div class="col-lg-12 text-center">
         <h2> Affectation des lieux </h2>
     </div>
+</div>
+
+<div class="row">
+    <ul id='middle'>
+        <li class="ligne">
+            <ul>
+                <li>
+                    <h3> Evènements non-traités : </h3>
+                </li>
+                <li>
+                    <select name="select2" size='4'>
+                        
+                    </select>
+                </li>
+            </ul>
+        </li>
+        <li class="ligne">
+            <ul>
+                <li>
+                    <h3> Lieux disponibles : </h3>
+                </li>
+                <li>
+                    <select name="select">
+                        
+                    </select>
+                </li>
+            </ul>
+        </li>
+        
+    </ul>
 </div>
