@@ -77,3 +77,49 @@ function ConnexionAdherent() {
         });
 }
 
+function ConnexionResponsable() {
+
+    // // Get the form.
+    // var form = $('#formCo');
+    // 
+    // // Serialize the form data.
+    // var formData = $(form).serialize();
+    var div = document.getElementById("ConnexionReussie");
+    $.ajax({
+        url: './ControlerServlet',
+        type: 'POST',
+        data: {
+            todo: 'ConnexionResponsable',
+            mail: $("#mail")[0].value,
+            mdp: $('#mdp')[0].value
+        },
+        dataType: 'json'
+    })
+        .always(function () {
+            //$('#Connexion').html('chargement');
+        })
+
+        .done(function (data) {
+            var responsable = data.responsable;
+            var contenuHtml = '';
+            if (responsable.existe) {
+                $('#ConnexionReussie').html(contenuHtml);
+                var requete = new XMLHttpRequest();
+                requete.open("GET", "AffectationLieux.html", false);
+                requete.send(null);
+                $('#ConnexionReussie').html(requete.responseText);
+                
+            }
+            else {
+                
+                $('#ConnexionReussie').html(contenuHtml);
+            }
+
+        })
+        .fail(function () {
+            $('#Connexion').html('ERREUR de chargement');
+        });
+}
+
+
+

@@ -5,20 +5,16 @@
  */
 package Controler;
 
-import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
 import Actions.Action;
 import Actions.ActionAccueil;
 import Actions.ActionActivite;
 import Actions.ActionConnexion;
+import Actions.ActionConnexionResponsable;
 import Actions.ActionDemande;
 import Actions.ActionListeActivite;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -132,11 +128,15 @@ public class ControlerServlet extends HttpServlet {
                 nouvelleAction = new ActionConnexion();
                 //System.out.println("epizjgzgji izejgzej 54");
                 break;
-            
+                
+            case "ConnexionResponsable":
+                nouvelleAction = new ActionConnexionResponsable();
+                break;
             default:
                 nouvelleAction = new ActionAccueil();
             
         }
+        
         return nouvelleAction;
     } 
     

@@ -10,6 +10,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.modele.Adherent;
+import fr.insalyon.dasi.collectif.metier.modele.Responsable;
 import java.io.PrintWriter;
 import java.util.List;
 /**
@@ -129,6 +130,32 @@ public class Serialization {
         // Objet JSON "Conteneur"
         JsonObject container = new JsonObject();
         container.add("adherent", jsonAdherent);
+        
+        //Serialisation et ecriture dans le flot de sortie
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(container);
+        out.println(json);
+        
+    }
+    
+    static void printResponsable(PrintWriter out, Responsable a) {
+        
+        JsonObject jsonResponsable = new JsonObject();
+           
+        if(a==null)
+        {
+            jsonResponsable.addProperty("existe", false);
+        }
+        else
+        {
+           jsonResponsable.addProperty("id",a.getId());
+           jsonResponsable.addProperty("mail",a.getMail());
+           jsonResponsable.addProperty("mdp", a.getMotDePasse());
+           jsonResponsable.addProperty("existe", true);
+        }
+        // Objet JSON "Conteneur"
+        JsonObject container = new JsonObject();
+        container.add("responsable", jsonResponsable);
         
         //Serialisation et ecriture dans le flot de sortie
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
