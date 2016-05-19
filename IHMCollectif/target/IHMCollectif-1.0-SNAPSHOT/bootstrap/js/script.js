@@ -60,15 +60,17 @@ function ConnexionAdherent() {
 
             if (adherent.existe) {
                 $("#datepicker").removeAttr("style");
-                $("#picker").removeAttr("style");
+                $("#timepick").removeAttr("style");
+                
+               //contenuHtml += '<form><input id="datepicker"  class="form-control btn-block" /></form><form class="tipePick"><select type="text" id="picker" class="form-control btn-block" ></form>';
                 $('#ConnexionReussie').html(contenuHtml);
             }
             else {
                 
                 //contenuHtml += '<form> <input id="datepicker" class="hasDatepicker"/> </form>';
                 //contenuHtml += '<script> $("#datepicker").datepicker(); </script>';
-                
-                $('#ConnexionReussie').html(contenuHtml);
+                contenuHtml += '<font color="red">Erreur de connexion</font>';
+                $('#ErreurCo').html(contenuHtml);
             }
 
         })

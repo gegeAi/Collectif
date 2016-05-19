@@ -86,3 +86,14 @@ body{
 	background-color: #D62929;
 }
 
+#picker {
+	width: 40%;	
+}
+
+#datepicker {
+	width: 40%;	
+}
+
+html {
+  background:none;
+}

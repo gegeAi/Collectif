@@ -7,6 +7,7 @@ package Controler;
 
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
+import fr.insalyon.dasi.collectif.metier.service.ServiceTechnique;
 import Actions.Action;
 import Actions.ActionAccueil;
 import Actions.ActionActivite;
@@ -31,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControlerServlet extends HttpServlet {
 
     public static ServiceMetier servMetier = new ServiceMetier();
+    public static ServiceTechnique servTech = new ServiceTechnique();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

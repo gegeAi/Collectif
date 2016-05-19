@@ -2,7 +2,11 @@
 <html>
 
 <head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="uikit/css/uikit.min.css" />
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
     <link href="bootstrap/css/style.css" rel="stylesheet">
 
     <script src="bootstrap/js/jquery-1.11.3.js"></script>
@@ -14,9 +18,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
+    
+    <script src="uikit/js/uikit.min.js"></script>
+    
+    <script src="uikit/js/components/autocomplete.js"></script>
+        <script src="uikit/js/components/timepicker.js"></script>
 
 
-    <meta charset="utf-8" />
+    
 </head>
 
 <body>
@@ -31,7 +40,8 @@
             <div class="col-lg-6" id="Connexion">
                 <div id="ConnexionReussie">
                     <div id="ErreurCo">
-
+                        <br>
+                        
                     </div>
                     <p> Bienvenue dans l'association Collect'If
                         <br> Vous êtes à la recherche d'une organisation capable de trouver pour vous des évènements correspondant
@@ -51,9 +61,15 @@
                     <a href="ConnexionResponsable.html"> Mode responsable </a>
 
                 </div>
-                <form>
-                    <input id="datepicker" style="visibility:hidden" />
+
+
+                <form class="uk-form">
+                    <input id="datepicker" class="form-control btn-block" style="visibility:hidden" />
+                    <input type="text" data-uk-timepicker id="timepick" style="visibility:hidden">
+                    <!--<select type="text" id="picker" class="form-control btn-block" style="visibility:hidden" />-->
                 </form>
+               
+
             </div>
 
             <div class="col-lg-6">
@@ -61,12 +77,6 @@
                 <h4>
                     Activités proposés
                 </h4>
-
-                <div class="col-lg-5">
-                    <form class="tipePick">
-                        <select type="text" id="picker" class="form-control btn-block">
-                    </form>
-                </div>
 
 
                 <div class="row">
@@ -88,17 +98,26 @@
 </script>
 
 <script>
-    $.getJSON("json/heure.json", function (data) {
-                for(var d in data)
-                {
-                    $('#picker').append($('<option>', {
-                        value: d,
-                        text: data[d]
-                    }));
-                }
-            });
+    // $.getJSON("json/heure.json", function (data) {
+    //             for(var d in data)
+    //             {
+    //                 $('#picker').append($('<option>', {
+    //                     value: d,
+    //                     text: data[d]
+    //                 }));
+    //             }
+    //         });
+            
+            
+   $(function() {
+    $( "#datepicker" ).datepicker({
+        dateFormat: 'dd/mm/yyyy',
+        
+    });
+  });
 
 </script>
+
 
 
 <!--Recuperer la valeur du select-->
