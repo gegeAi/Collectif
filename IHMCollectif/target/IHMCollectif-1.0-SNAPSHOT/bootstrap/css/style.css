@@ -14,6 +14,12 @@ h2{
     width: 60%;
 }
 
+.btn-blockDemande {
+    width: 50%;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
 div.vertical-line {
     width: 1px; /* Line width */
   background-color: black; /* Line color */
@@ -21,6 +27,10 @@ div.vertical-line {
   float: left; /* Causes the line to float to left of content. 
     You can instead use position:absolute or display:inline-block
     if this fits better with your design */
+}
+
+#timepick {
+  margin-left: 10px;
 }
 
 input{

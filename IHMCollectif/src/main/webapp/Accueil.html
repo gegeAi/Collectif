@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    
+
     <link rel="stylesheet" href="uikit/css/uikit.min.css" />
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="bootstrap/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
@@ -18,75 +18,101 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-    
+
     <script src="uikit/js/uikit.min.js"></script>
-    
+
     <script src="uikit/js/components/autocomplete.js"></script>
-        <script src="uikit/js/components/timepicker.js"></script>
+    <script src="uikit/js/components/timepicker.js"></script>
 
 
-    
+
 </head>
 
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-lg-12">
+                <a href="javascript:Accueil()" class="Collectif"> Collect'IF </a>
+            </div>
             <div class="col-lg-12 text-center">
                 <h2> Collect'IF </h2>
+                <form action="javascript:Deconnexion()">
+                    <button class="text-right" id="signOut" style="visibility:hidden">Deconnexion</button>
+                </form>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6" id="Connexion">
-                <div id="ConnexionReussie">
-                    <div id="ErreurCo">
-                        <br>
-                        
+            
+            <div class="row">
+                <div id="demande" style="visibility:hidden"" >
+                    <div class="col-lg-12 text-center">
+                        <h3> Création d'une demande </h3>
                     </div>
-                    <p> Bienvenue dans l'association Collect'If
-                        <br> Vous êtes à la recherche d'une organisation capable de trouver pour vous des évènements correspondant
-                        à vos activités favorites, de manière efficace et sans travail de votre part ? Alors Collect'IF est
-                        fait pour vous
-                    </p>
-                    <p>
-                        N'hésitez pas à vous inscrire dès maintenant, pour profiter des nombreuses activités que des milliers d'internautes peuvent
-                        partager avec vous !
-                    </p>
-                    <form class="form-group" id="formCo" action="javascript:ConnexionAdherent()">
-                        <input type="email" class="form-control" id="mail" placeholder="Adresse email" size="8" required/>
-                        <button type="submit" class="btn btn-default btn-block60" id="ConnexionBouton"> Connexion </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" id="Connexion">
+                    <div id="ConnexionReussie">
+                        <div id="inscriptionReussie">
+                            <br>
+
+                        </div>
+                        <div id="ErreurCo">
+                            <br>
+                            <!--<script type="text/javascript">
+                                getParameterByName(name);
+                            </script>-->
+                            <br>
+                        </div>
+                        <p> Bienvenue dans l'association Collect'If
+                            <br> Vous êtes à la recherche d'une organisation capable de trouver pour vous des évènements correspondant
+                            à vos activités favorites, de manière efficace et sans travail de votre part ? Alors Collect'IF
+                            est fait pour vous
+                        </p>
+                        <p>
+                            N'hésitez pas à vous inscrire dès maintenant, pour profiter des nombreuses activités que des milliers d'internautes peuvent
+                            partager avec vous !
+                        </p>
+                        <div id="formConnecte">
+                            <form class="form-group" id="formCo" action="javascript:ConnexionAdherent()">
+                                <input type="email" class="form-control" id="mail" placeholder="Adresse email" size="8" required/>
+                                <button type="submit" class="btn btn-default btn-block60" id="ConnexionBouton"> Connexion </button>
+                            </form>
+                        
+                        
+                        <a href="Inscription.html"> Créer un compte </a>
+                        <br/>
+                        <a href="ConnexionResponsable.html"> Mode responsable </a>
+                        </div>
+                    </div>
+
+
+                    <form class="uk-form" action="javascript:creerDemande()">
+                        <input id="datepicker" class="form-control btn-block col-lg-3" style="visibility:hidden" required/>
+                        <input type="text" data-uk-timepicker id="timepick" class="col-lg-3" style="visibility:hidden" required>
+                        <div id="choixAct" style="visibility:hidden"></div>
+                        <button type="submit" class="btn btn-default btn-blockDemande" id="DemandeBouton" style="visibility:hidden"> Creation demande </button>
+                        
+                        <!--<select type="text" id="picker" class="form-control btn-block" style="visibility:hidden" />-->
                     </form>
-                    <a href="Inscription.html"> Créer un compte </a>
-                    <br/>
-                    <a href="ConnexionResponsable.html"> Mode responsable </a>
+
 
                 </div>
 
+                <div class="col-lg-6">
 
-                <form class="uk-form">
-                    <input id="datepicker" class="form-control btn-block" style="visibility:hidden" />
-                    <input type="text" data-uk-timepicker id="timepick" style="visibility:hidden">
-                    <!--<select type="text" id="picker" class="form-control btn-block" style="visibility:hidden" />-->
-                </form>
-               
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <h4>
+                    <h4>
                     Activités proposés
                 </h4>
 
 
-                <div class="row">
-                    <div id='listeActivites'>
-                        <p> Chargement des activités </p>
+                    <div class="row">
+                        <div id='listeActivites'>
+                            <p> Chargement des activités </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
@@ -94,6 +120,17 @@
 
 <script>
     listeActivites();
+    
+    function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    document.write(produceMessage(name));
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 </script>
 
@@ -111,7 +148,7 @@
             
    $(function() {
     $( "#datepicker" ).datepicker({
-        dateFormat: 'dd/mm/yyyy',
+        //dateFormat: 'dd/mm/yyyy',
         
     });
   });

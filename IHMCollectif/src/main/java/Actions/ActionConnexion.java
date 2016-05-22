@@ -28,6 +28,8 @@ public class ActionConnexion extends Action{
             String email = request.getParameter("mail");
             Adherent adherentConnexion = servTech.authentifierAdherent(email);
             System.out.println("mail="+email);
+            if( adherentConnexion != null)
+                request.getSession().setAttribute("client", adherentConnexion);
             
             System.out.println(adherentConnexion);
             //request.setAttribute( "activites", activites );

@@ -2,9 +2,16 @@
 <html>
 
 <head>
+    
+    <meta charset="utf-8" />
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/style.css" rel="stylesheet">
-    <meta charset="utf-8" />
+    <script src="bootstrap/js/script.js"></script>
+    
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    
 </head>
 
 <body>
@@ -20,7 +27,11 @@
             </div>
         </div>
         <div class="row">
-            <form class="form-group" action="Accueil.html">
+            <div id="Connexion"> 
+                <br>
+            </div>
+            <form class="form-group" action="javascript:InscriptionAdherent()">
+               <!-- <form class="form-group" action="javascript:InscriptionAdherent()" onsubmit="return ">  Ne marche pas car asynchrone -->
                 <div class="col-lg-5  col-lg-offset-1 col-lg-push-1">
                     <input type="email" class="form-control" id="mail" placeholder="Adresse email" size="8" required/>
                     <input type="text" class="form-control" id="adresse" placeholder="Adresse postale" size="8" required/>
@@ -32,10 +43,9 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-lg-push-4">
-
                 <button type="submit" class="btn btn-default btn-block btn-inscription"> Créer le compte </button>
                 </form>
-                <a href="Accueil.html" class="Page-accueil"> Page d'accueil </a>
+                <a href="Accueil.html?name=Inscription+reussie" class="Page-accueil"> Page d'accueil </a>
             </div>
         </div>
     </div>
