@@ -6,10 +6,10 @@
 
     <link rel="stylesheet" href="uikit/css/uikit.min.css" />
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="bootstrap/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+    <link type="text/css" href="bootstrap/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     <link href="bootstrap/css/style.css" rel="stylesheet">
 
-    <script src="bootstrap/js/jquery-1.11.3.js"></script>
+    <script src="bootstrap/js/jquery-2.2.4.min.js"></script>
     <script src="bootstrap/js/script.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
 
@@ -19,8 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 
+    <!--<script type="text/javascript" src="bootstrap/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>-->
+    <script type="text/javascript" src="bootstrap/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
     <script src="uikit/js/uikit.min.js"></script>
-
     <script src="uikit/js/components/autocomplete.js"></script>
     <script src="uikit/js/components/timepicker.js"></script>
 
@@ -89,7 +90,7 @@
                         <br>
                     </div>
                     <form class="uk-form" action="javascript:creerDemande()">
-                        <input id="datepicker" class="form-control btn-block date-date-start-date:'+0d' col-lg-3" style="visibility:hidden" required/>
+                        <input id="datepicker" class="form-control btn-block col-lg-3" style="visibility:hidden" required/>
                         <input type="text" data-uk-timepicker id="timepick" class="col-lg-3" style="visibility:hidden" required>
                         <div id="choixAct" style="visibility:hidden"></div>
                         <button type="submit" class="btn btn-default btn-blockDemande" id="DemandeBouton" style="visibility:hidden"> Creation demande </button>
@@ -150,7 +151,7 @@
             
    $(function() {
     $( "#datepicker" ).datepicker({
-        startDate: "+0d"
+        startDate: new Date()
         
     });
   });
