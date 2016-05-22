@@ -8,6 +8,7 @@ import Controler.ControlerServlet;
 import static Controler.ControlerServlet.servMetier;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.modele.Adherent;
+import fr.insalyon.dasi.collectif.metier.modele.Demande;
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class ActionDemande extends Action{
         Adherent adherentConnexion = (Adherent) session.getAttribute("client");
         String idString = request.getParameter("activite");
         int id = Integer.parseInt(idString); 
+        boolean reussite = false;
         Activite activiteEnCours = null;
         List<Activite> listAct;
         try {
@@ -43,7 +45,7 @@ public class ActionDemande extends Action{
                 String dateString = request.getParameter("date")+"-"+heure;
                 dateString.concat(heure);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/YYYY-HH:mm");
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy-HH:mm");
                 try {
 
                     Date date = formatter.parse(dateString);
@@ -51,8 +53,13 @@ public class ActionDemande extends Action{
                     System.out.println(formatter.format(date));
                     System.out.println(activiteEnCours.getDenomination());
 
-                    servMetier.creerDemande(adherentConnexion, activiteEnCours, date);
-                    //Serialization.printDemande(out, activite, adherentConnexion, date);
+                    Demande d = servMetier.creerDemande(adherentConnexion, activiteEnCours, date);
+                    
+                    
+                    if(d != null)
+                       reussite = true;
+                        
+                    Serialization.printInscriptionAdherent(out, reussite);
 
                 } catch (Exception e) {
                         e.printStackTrace();

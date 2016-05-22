@@ -85,9 +85,11 @@
                         </div>
                     </div>
 
-
+                    <div id="demandeFaite">
+                        <br>
+                    </div>
                     <form class="uk-form" action="javascript:creerDemande()">
-                        <input id="datepicker" class="form-control btn-block col-lg-3" style="visibility:hidden" required/>
+                        <input id="datepicker" class="form-control btn-block date-date-start-date='+0d' col-lg-3" style="visibility:hidden" required/>
                         <input type="text" data-uk-timepicker id="timepick" class="col-lg-3" style="visibility:hidden" required>
                         <div id="choixAct" style="visibility:hidden"></div>
                         <button type="submit" class="btn btn-default btn-blockDemande" id="DemandeBouton" style="visibility:hidden"> Creation demande </button>
@@ -148,7 +150,7 @@
             
    $(function() {
     $( "#datepicker" ).datepicker({
-        //dateFormat: 'dd/mm/yyyy',
+        startDate: "+0d"
         
     });
   });

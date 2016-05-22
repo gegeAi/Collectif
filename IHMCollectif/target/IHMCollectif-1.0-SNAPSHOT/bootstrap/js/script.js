@@ -29,6 +29,7 @@ function listeActivites() {
             $('#listeActivites').html(contenuHtml);
             choixActivite += '</select>';
             $('#choixAct').html(choixActivite);
+           
         })
         .fail(function () {
             $('#listeActivites').html('ERREUR de chargement');
@@ -195,8 +196,9 @@ function InscriptionAdherent() {
         .done(function (data) {
             var adherent = data.adherent;
             if (adherent.reussite) {
-                document.location.href = "Accueil.html?message=Inscription+reussie";
+                document.location.href = "Accueil.html";
                 
+                $('#inscriptionReussie').html('Inscription effectuée');
                 // TODO : afficher sur accueil cool bro
                 //javascript:q=(document.location.href);void(open('Accueil.html','_self','resizable,location,menubar,toolbar,scrollbars,status'));
             }
@@ -227,23 +229,26 @@ function creerDemande() {
             date: $("#datepicker")[0].value,
             activite: $("#act")[0].value
         },
+        dataType: 'json'
     })
-        .always(function () {
-            $('#Connexion').html('chargement');
-        })
-
-        .done(function () {
+        
+        .done(function (data) {
             
-             document.location.href = "Accueil.html";
-                
-             var contenuHTML = '';
-             
+             //document.location.href = "Accueil.html";
+             var demande = data.adherent;
+             var contenuHTM = '';
+             if (demande.reussite) {
+                contenuHTML = '<p>Demande effectuée</p>';
+             }
+             else{
+                 contenuHTML = '<p>Demande effectuée</p>';
+             }
              
              //contenuHTML += '<form action ="javascript:ConnexionAdherent()"> <button type="submit" class="btn btn-default btn-blockDemande""> Effectuer demande </button> </form>';
              //contenuHTML += '<form action ="javascript:Deconnexion()"> <button type="submit" class="btn btn-default btn-blockDemande""> Deconnexion </button> </form>';
                 // TODO : afficher sur accueil cool bro
                 //javascript:q=(document.location.href);void(open('Accueil.html','_self','resizable,location,menubar,toolbar,scrollbars,status'));
-             $('#formConnecte').html(contenuHTML);
+             $('#demandeFaite').html(contenuHTML);
 
         })
         .fail(function () {

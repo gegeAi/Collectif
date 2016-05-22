@@ -181,22 +181,5 @@ public class Serialization {
         out.println(json);
     }
 
-    /*static void printDemande(PrintWriter out, Activite activite, Adherent adherentConnexion, Date date) {
-        
-        JsonObject jsonDemande = new JsonObject();
-        
-         // Objet JSON "Conteneur"
-        JsonObject container = new JsonObject();
-        container.add("activite", activite);
-        container.add("adherent", jsonAdherent);
-        container.add("adherent", jsonAdherent);
-        
-        //Serialisation et ecriture dans le flot de sortie
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(container);
-        out.println(json);
-        
-        
-    }*/
     
 }
