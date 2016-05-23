@@ -236,12 +236,12 @@ function creerDemande() {
             
              //document.location.href = "Accueil.html";
              var demande = data.adherent;
-             var contenuHTM = '';
+             var contenuHTML = '';
              if (demande.reussite) {
                 contenuHTML = '<p>Demande effectuée</p>';
              }
              else{
-                 contenuHTML = '<p>Demande effectuée</p>';
+                 contenuHTML = '<p>Demande non effectuée, veuillez choisir une date correcte</p>';
              }
              
              //contenuHTML += '<form action ="javascript:ConnexionAdherent()"> <button type="submit" class="btn btn-default btn-blockDemande""> Effectuer demande </button> </form>';
@@ -254,10 +254,6 @@ function creerDemande() {
         .fail(function () {
             $('#Connexion').html('ERREUR de chargement');
         });
-
-
-
-
 }
 
 function Deconnexion() {
@@ -341,4 +337,76 @@ function affecte() {
             alert("Evènement traité");
            
         })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function testConnexionClient() {
+    
+    // Get the form.
+    // var form = $('#formCo');
+    // 
+    // Serialize the form data.
+    // var formData = $(form).serialize();
+    
+    $.ajax({
+        url: './ControlerServlet',
+        type: 'POST',
+        data: {
+            todo: 'TestCo',
+        },
+    })
+        
+        .done(function (data) {
+            
+             //document.location.href = "Accueil.html";
+             var demande = data.adherent;
+             var contenuHTML = '';
+             if (demande.reussite) {
+                contenuHTML = '<p>Demande effectuée</p>';
+             }
+             else{
+                 contenuHTML = '<p>Demande non effectuée, veuillez choisir une date correcte</p>';
+             }
+             
+             //contenuHTML += '<form action ="javascript:ConnexionAdherent()"> <button type="submit" class="btn btn-default btn-blockDemande""> Effectuer demande </button> </form>';
+             //contenuHTML += '<form action ="javascript:Deconnexion()"> <button type="submit" class="btn btn-default btn-blockDemande""> Deconnexion </button> </form>';
+                // TODO : afficher sur accueil cool bro
+                //javascript:q=(document.location.href);void(open('Accueil.html','_self','resizable,location,menubar,toolbar,scrollbars,status'));
+             $('#demandeFaite').html(contenuHTML);
+
+        })
+        .fail(function () {
+            $('#Connexion').html('ERREUR de chargement');
+        });
 }

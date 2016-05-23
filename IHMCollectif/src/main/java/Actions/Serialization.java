@@ -214,4 +214,22 @@ public class Serialization {
         out.println(json);
     }
     
+    static void printInscriptionAdherent(PrintWriter out, boolean reussite) {
+        
+        JsonObject jsonAdherent = new JsonObject();
+
+        jsonAdherent.addProperty("reussite", reussite);
+        
+        // Objet JSON "Conteneur"
+        JsonObject container = new JsonObject();
+        container.add("adherent", jsonAdherent);
+        
+        //Serialisation et ecriture dans le flot de sortie
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(container);
+        out.println(json);
+    }
+    
 }
+
+

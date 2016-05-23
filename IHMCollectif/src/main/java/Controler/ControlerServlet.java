@@ -12,7 +12,9 @@ import Actions.ActionActivite;
 import Actions.ActionActivitesPlanifiees;
 import Actions.ActionConnexion;
 import Actions.ActionConnexionResponsable;
+import Actions.ActionDeconnexion;
 import Actions.ActionDemande;
+import Actions.ActionInscriptionAdherent;
 import Actions.ActionLieux;
 import Actions.ActionListeActivite;
 import java.io.IOException;
@@ -41,7 +43,7 @@ public class ControlerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          //Parcours de la liste des paramètres et les affiches
-         
+        response.setContentType("application/json;charset=UTF-8");
         Enumeration<String> result = request.getParameterNames();
         while (result.hasMoreElements()) {
             String nextElement = result.nextElement();
@@ -141,6 +143,16 @@ public class ControlerServlet extends HttpServlet {
                 
             case "listeLieux":
                 nouvelleAction = new ActionLieux();
+                break;
+                
+            case "Deconnexion":
+                nouvelleAction = new ActionDeconnexion();
+                break;
+                
+                
+            case "InscriptionAdherent":
+                nouvelleAction = new ActionInscriptionAdherent();
+                System.out.println("epizjgzgji izejgzej 54");
                 break;
             default:
                 nouvelleAction = new ActionAccueil();
