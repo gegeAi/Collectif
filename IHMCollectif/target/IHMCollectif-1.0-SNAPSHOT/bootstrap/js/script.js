@@ -299,7 +299,46 @@ function listeEvenementsPlanifies() {
             }
            
         })
-        .fail(function () {
-            $('#listeActivites').html('ERREUR de chargement');
-        });
+}
+
+function listeLieux() {
+
+    $.ajax({
+        url: './ControlerServlet',
+        type: 'POST',
+        data: {
+            todo: 'listeLieux'
+        },
+        dataType: 'json'
+    })
+
+        .done(function (data) {
+            var lieux = data.lieux;
+
+            for (i = 0; i < lieux.length; i++) {
+
+                document.getElementById("lieux").option[i].value = lieux.id + " " + lieux.denomination;
+                
+            }
+           
+        })
+}
+
+function affecte() {
+
+    $.ajax({
+        url: './ControlerServlet',
+        type: 'POST',
+        data: {
+            todo: 'listeLieux',
+            lieu: document.getElementById("lieux").option[document.getElementById("lieux").selectedIndex].value(),
+            event: document.getElementById("listePlanifies").option[document.getElementById("listePlanifies").selectedIndex].value()
+        },
+        dataType: 'json'
+    })
+
+        .done(function (data) {
+            alert("Evènement traité");
+           
+        })
 }

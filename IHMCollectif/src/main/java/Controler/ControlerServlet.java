@@ -9,9 +9,11 @@ import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
 import Actions.Action;
 import Actions.ActionAccueil;
 import Actions.ActionActivite;
+import Actions.ActionActivitesPlanifiees;
 import Actions.ActionConnexion;
 import Actions.ActionConnexionResponsable;
 import Actions.ActionDemande;
+import Actions.ActionLieux;
 import Actions.ActionListeActivite;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -131,6 +133,14 @@ public class ControlerServlet extends HttpServlet {
                 
             case "ConnexionResponsable":
                 nouvelleAction = new ActionConnexionResponsable();
+                break;
+                
+            case "listeNonPlanifies":
+                nouvelleAction = new ActionActivitesPlanifiees();
+                break;
+                
+            case "listeLieux":
+                nouvelleAction = new ActionLieux();
                 break;
             default:
                 nouvelleAction = new ActionAccueil();
