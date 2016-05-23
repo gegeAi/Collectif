@@ -196,9 +196,8 @@ function InscriptionAdherent() {
         .done(function (data) {
             var adherent = data.adherent;
             if (adherent.reussite) {
-                document.location.href = "Accueil.html";
+                document.location.href = "Accueil.html?Inscription=reussie";
                 
-                $('#inscriptionReussie').html('Inscription effectuée');
                 // TODO : afficher sur accueil cool bro
                 //javascript:q=(document.location.href);void(open('Accueil.html','_self','resizable,location,menubar,toolbar,scrollbars,status'));
             }
@@ -266,9 +265,9 @@ function Deconnexion() {
         },
     })
 
-        .done(function () {
+        
             document.location.href = "Accueil.html";
-        });
+        
 
 
 }
@@ -410,3 +409,15 @@ function testConnexionClient() {
             $('#Connexion').html('ERREUR de chargement');
         });
 }
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+

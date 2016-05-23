@@ -26,13 +26,13 @@ public class ActionConnexion extends Action{
         try {
             List<Adherent> adherents = servMetier.listerAdherents();
             String email = request.getParameter("mail");
-            System.out.println("mail="+email);
+            //System.out.println("mail="+email);
             Adherent adherentConnexion = null;
             for (Adherent a : adherents) {
                 if (a.getMail().equals(email))     
                     adherentConnexion = a;
             }
-            System.out.println(adherentConnexion);
+            //System.out.println(adherentConnexion);
             //request.setAttribute( "activites", activites );
             Serialization.printAdherents(out, adherentConnexion);
         } catch (Throwable ex) {
