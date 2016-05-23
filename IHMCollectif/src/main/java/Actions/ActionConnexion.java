@@ -5,7 +5,7 @@
  */
 package Actions;
 import Controler.ControlerServlet;
-import static Controler.ControlerServlet.servTech;
+import static Controler.ControlerServlet.servMetier;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.modele.Adherent;
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
@@ -24,13 +24,14 @@ public class ActionConnexion extends Action{
     @Override
     public void execute(HttpServletRequest request, PrintWriter out) {
         try {
-            
+            List<Adherent> adherents = servMetier.listerAdherents();
             String email = request.getParameter("mail");
-            Adherent adherentConnexion = servTech.authentifierAdherent(email);
             System.out.println("mail="+email);
-            if( adherentConnexion != null)
-                request.getSession().setAttribute("client", adherentConnexion);
-            
+            Adherent adherentConnexion = null;
+            for (Adherent a : adherents) {
+                if (a.getMail().equals(email))     
+                    adherentConnexion = a;
+            }
             System.out.println(adherentConnexion);
             //request.setAttribute( "activites", activites );
             Serialization.printAdherents(out, adherentConnexion);

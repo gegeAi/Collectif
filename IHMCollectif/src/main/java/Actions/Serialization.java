@@ -10,9 +10,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.modele.Adherent;
+import fr.insalyon.dasi.collectif.metier.modele.Evenement;
 import fr.insalyon.dasi.collectif.metier.modele.Responsable;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 /**
  *
@@ -164,22 +164,30 @@ public class Serialization {
         out.println(json);
         
     }
-
-    static void printInscriptionAdherent(PrintWriter out, boolean reussite) {
+    
+    public static void printEvenements( PrintWriter out, List<Evenement> event)
+    {
+        JsonArray jsonListe = new JsonArray();
         
-        JsonObject jsonAdherent = new JsonObject();
-
-        jsonAdherent.addProperty("reussite", reussite);
+        for(Evenement a : event)
+        {
+           JsonObject jsonActivite = new JsonObject();
+           
+           jsonActivite.addProperty("id",a.getId());
+           jsonActivite.addProperty("date",a.getDate().toString().substring(4,7)+a.getDate().toString().substring(24));
+           jsonActivite.addProperty("nbParticipants",a.getNbParticipants());
+           
+           jsonListe.add(jsonActivite);
+        }
         
         // Objet JSON "Conteneur"
         JsonObject container = new JsonObject();
-        container.add("adherent", jsonAdherent);
+        container.add("events", jsonListe);
         
         //Serialisation et ecriture dans le flot de sortie
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(container);
         out.println(json);
     }
-
     
 }

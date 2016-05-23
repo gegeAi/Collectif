@@ -6,15 +6,12 @@
 package Controler;
 
 import fr.insalyon.dasi.collectif.metier.service.ServiceMetier;
-import fr.insalyon.dasi.collectif.metier.service.ServiceTechnique;
 import Actions.Action;
 import Actions.ActionAccueil;
 import Actions.ActionActivite;
 import Actions.ActionConnexion;
 import Actions.ActionConnexionResponsable;
-import Actions.ActionDeconnexion;
 import Actions.ActionDemande;
-import Actions.ActionInscriptionAdherent;
 import Actions.ActionListeActivite;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -30,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ControlerServlet extends HttpServlet {
 
     public static ServiceMetier servMetier = new ServiceMetier();
-    public static ServiceTechnique servTech = new ServiceTechnique();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -136,17 +132,6 @@ public class ControlerServlet extends HttpServlet {
             case "ConnexionResponsable":
                 nouvelleAction = new ActionConnexionResponsable();
                 break;
-                
-            case "Deconnexion":
-                nouvelleAction = new ActionDeconnexion();
-                break;
-                
-            case "InscriptionAdherent":
-                nouvelleAction = new ActionInscriptionAdherent();
-                System.out.println("epizjgzgji izejgzej 54");
-                break;
-                
-                
             default:
                 nouvelleAction = new ActionAccueil();
             

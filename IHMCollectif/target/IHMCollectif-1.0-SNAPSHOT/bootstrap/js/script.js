@@ -276,3 +276,30 @@ function Deconnexion() {
 
 
 }
+
+function listeEvenementsPlanifies() {
+
+    $.ajax({
+        url: './ControlerServlet',
+        type: 'POST',
+        data: {
+            todo: 'listeNonPlanifies'
+        },
+        dataType: 'json'
+    })
+
+        .done(function (data) {
+            var evenements = data.events;
+
+            for (i = 0; i < evenements.length; i++) {
+
+                var texte = evenements[i].id + " " + evenements[i].date + " " + evenements[i].nbParticipants;
+                document.getElementById("listePlanifies").option[i].value = texte;
+                
+            }
+           
+        })
+        .fail(function () {
+            $('#listeActivites').html('ERREUR de chargement');
+        });
+}
