@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import fr.insalyon.dasi.collectif.metier.modele.Activite;
 import fr.insalyon.dasi.collectif.metier.modele.Adherent;
 import fr.insalyon.dasi.collectif.metier.modele.Evenement;
+import fr.insalyon.dasi.collectif.metier.modele.Lieu;
 import fr.insalyon.dasi.collectif.metier.modele.Responsable;
 import java.io.PrintWriter;
 import java.util.List;
@@ -183,6 +184,29 @@ public class Serialization {
         // Objet JSON "Conteneur"
         JsonObject container = new JsonObject();
         container.add("events", jsonListe);
+        
+        //Serialisation et ecriture dans le flot de sortie
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(container);
+        out.println(json);
+    }
+
+    static void printLieux(PrintWriter out, List<Lieu> lieux) {
+        JsonArray jsonListe = new JsonArray();
+        
+        for(Lieu a : lieux)
+        {
+           JsonObject jsonActivite = new JsonObject();
+           
+           jsonActivite.addProperty("id",a.getId());
+           jsonActivite.addProperty("denomination",a.getDenomination());
+           
+           jsonListe.add(jsonActivite);
+        }
+        
+        // Objet JSON "Conteneur"
+        JsonObject container = new JsonObject();
+        container.add("lieux", jsonListe);
         
         //Serialisation et ecriture dans le flot de sortie
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
